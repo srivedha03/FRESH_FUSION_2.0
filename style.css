@@ -943,68 +943,72 @@ footer {
 
 /* REGISTRATION */
 /* fullpage iframe only */
-.iframe-wrapper.centered {
+
+/* ===== IFRAME: full-screen, iPhone-safe, responsive ===== */
+
+/* Base wrapper (works for both .fullpage and .centered) */
+.iframe-wrapper {
   position: fixed;
-  top: 40%;
-  /* margin-top: 5rem; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw; /* desktop/tablet size */
-  height: 100vh;
-  /* background: white; */
-  /* border-radius: 5px; */
-  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); */
-  z-index: 9999;
-  border: none;
-  overflow: hidden;
+  inset: 0; /* top/right/bottom/left: 0 */
+  width: 100vw;
+  height: 100dvh; /* visible viewport on iOS (fixes 100vh bug) */
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 9998;
+  overflow: hidden; /* iframe will handle scrolling */
+  background: transparent;
 }
 
-.iframe-wrapper.centered iframe {
+/* Full-page variant */
+.iframe-wrapper.fullpage {
+  /* inherits from .iframe-wrapper */
+}
+
+/* Centered variant (desktop); overridden on phones below */
+.iframe-wrapper.centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  inset: auto;
+  width: 100vw;
+  height: 100dvh;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* The actual iframe */
+.iframe-wrapper iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: none;
+  overflow: auto; /* allow inner scroll */
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
 }
 
-/* ✅ Responsive for small devices */
+/* iPhone/Small screens: force true full-bleed (no translate) */
 @media (max-width: 768px) {
   .iframe-wrapper.centered {
-    top: 0;
-    left: 0;
-    transform: none; /* remove translate */
-    width: 100vw; /* full screen on phone */
-    height: 100vh;
-    border-radius: 0; /* no rounded corners on mobile */
+    position: fixed;
+    inset: 0;
+    transform: none;
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
     box-shadow: none;
   }
 }
 
-.iframe-wrapper.fullpage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw; /* full viewport width */
-  height: 100vh; /* full viewport height */
-  margin: 0;
-  padding: 0;
-  z-index: 9999;
-  overflow: hidden; /* prevent iframe scrollbars */
-}
-
-.iframe-wrapper.fullpage iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  overflow: hidden; /* hide scroll inside iframe */
-}
-
+/* ===== Overlay to hide Tally watermark on RIGHT side only
+   (click-through so it NEVER blocks the Submit button) ===== */
 .footer-overlay {
-  position: absolute;
+  position: fixed; /* attach to viewport, not inside iframe */
+  right: 0;
   bottom: 0;
-  /* left: 80%; */
-  width: 100%;
-  height: 60px; /* adjust to cover watermark area */
-  background: black; /* same as page background */
-  z-index: 10;
+  width: 100%; /* cover only right half; adjust if needed */
+  height: 55px; /* small strip */
+  background: #202b3b; /* match site theme */
+  z-index: 9999; /* above iframe */
+  pointer-events: none; /* DO NOT block taps inside the form */
 }
 
 /*  SLIDESHOW */
