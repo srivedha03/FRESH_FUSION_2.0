@@ -3,8 +3,7 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
-const launch = "Oct 12, 2025";
-
+const launch = "Oct 12, 2025 12:00:00";
 function countdown() {
   const launchDate = new Date(launch);
   const currentDate = new Date();

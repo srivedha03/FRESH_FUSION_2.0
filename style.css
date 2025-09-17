@@ -80,6 +80,63 @@ a {
   z-index: 10000;
 }
 
+.cta-section {
+  position: relative;
+}
+
+/* Safe offset for fixed navbar height */
+:root {
+  --nav-safe: 96px; /* desktop */
+}
+
+@media (max-width: 980px) {
+  :root {
+    --nav-safe: 72px;
+  } /* smaller on mobile */
+}
+
+.cta-section {
+  position: relative;
+}
+/* Desktop (default) → top-right */
+
+/* Desktop (default) → top-right, compact */
+.cta-top-btn {
+  position: absolute;
+  top: calc(var(--nav-safe) + 12px);
+  right: 30px;
+  padding: 8px 18px;
+  width: 140px;
+  background-color: rgba(234, 80, 35, 0.8);
+  color: var(--white-color);
+  font-weight: 700;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 9999;
+}
+
+/* Mobile → center under navbar */
+@media (max-width: 768px) {
+  .cta-top-btn {
+    position: relative; /* remove absolute */
+    display: block; /* full block element */
+    margin-left: 35%;
+    /* margin: 10px auto 20px; */
+    /* margin-right: 50%; */
+    /* margin: 80px auto 10px; auto centers horizontally */
+    width: 200px; /* slightly wider */
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+.cta-top-btn:hover {
+  background-color: rgba(234, 80, 35, 0.7); /* darker on hover */
+  transform: scale(1.05);
+}
+
 nav.sticky {
   padding: 20px 8%;
   background-color: #0f1723;
@@ -504,7 +561,7 @@ header .background div {
   align-items: center;
   justify-content: space-around;
   width: 300px;
-  height: 200px;
+  height: 150px;
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
 }
