@@ -42,23 +42,27 @@ a {
 }
 
 .section-title-1 {
+  margin-top: 10px;
   font-size: 2.3em;
   font-weight: 900;
-  padding: 10px;
+  /* padding: 10px; */
+  margin-bottom: 10px;
+  text-align: center;
   letter-spacing: 0.1em;
   color: var(--secondary-color);
   text-transform: uppercase;
 }
 
 .section-title-2 {
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   font-size: 1em;
   font-weight: 400;
   letter-spacing: 0.4em;
+  line-height: 24px;
   color: var(--gray-color);
   text-transform: uppercase;
 }
-/* RESET END */
 
 /* HERO SECTION */
 #hero-section {
@@ -79,73 +83,66 @@ a {
   transition: all 0.6s ease;
   z-index: 10000;
 }
+:root {
+  --nav-safe: 200px; /* desktop */
+}
 
 .cta-section {
   position: relative;
 }
 
-/* Safe offset for fixed navbar height */
-:root {
-  --nav-safe: 96px; /* desktop */
-}
-
 @media (max-width: 980px) {
   :root {
-    --nav-safe: 72px;
+    --nav-safe: 100px;
   } /* smaller on mobile */
 }
 
 .cta-section {
   position: relative;
 }
-/* Desktop (default) → top-right */
 
-/* Desktop (default) → top-right, compact */
-.cta-top-btn {
-  position: absolute;
-  top: calc(var(--nav-safe) + 12px);
-  right: 30px;
-  padding: 8px 18px;
-  width: 141px;
-  background-color: rgba(234, 80, 35, 0.6);
+.cta-main-btn {
+  display: inline-block;
+  margin-top: 50px;
+  padding: 12px 28px;
+  width: clamp(180px, 50vw, 260px);
+  text-align: center;
+  background-color: rgba(234, 80, 35, 0.7);
   color: var(--white-color);
-  font-weight: 700;
+  font-weight: 800;
   border-radius: 30px;
   text-transform: uppercase;
-  font-size: 0.9rem;
-  text-align: center;
-  z-index: 9999;
+  font-size: clamp(14px, 3.5vw, 16px);
+  letter-spacing: 0.08em;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.cta-main-btn:hover {
+  background-color: rgba(234, 80, 35, 0.92);
+  transform: translateY(-1px);
 }
 
-/* Mobile → center under navbar */
 @media (max-width: 768px) {
-  .cta-top-btn {
-    position: relative; /* remove absolute */
-    display: block; /* full block element */
-    margin-left: 35%;
-    /* margin: 10px auto 20px; */
-    /* margin-right: 50%; */
-    /* margin: 80px auto 10px; auto centers horizontally */
-    width: 200px; /* slightly wider */
-    padding: 12px 20px;
-    font-size: 1rem;
+  .hero-title {
+    letter-spacing: 0.18rem;
+  }
+  .cta-main-btn {
+    width: min(70%, 300px);
+    padding: 14px 15px;
+    font-size: 1rem; /* readable on small screens */
   }
 }
 
-.cta-top-btn:hover {
-  background-color: rgba(234, 80, 35, 0.7); /* darker on hover */
-  transform: scale(1.05);
-}
-
 nav.sticky {
-  padding: 20px 8%;
+  padding: 40px 10%;
   background-color: #0f1723;
 }
 
+/* Navbar logo font change */
 .logo {
   white-space: nowrap;
+  font-family: "Lato", sans-serif; /* cleaner font */
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 700; /* bolder */
   letter-spacing: 2px;
   color: var(--white-color);
 }
@@ -238,19 +235,20 @@ header .background div {
 }
 
 .text-section {
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 70px);
-  margin-bottom: 80px;
+  height: calc(100vh - 100px);
+  /* margin-bottom: 80px; */
 }
 
 .hero-title {
   padding: 10px;
   font-size: 2.5em;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.5rem;
   text-align: center;
   color: var(--white-color);
@@ -270,7 +268,7 @@ header .background div {
   place-items: center;
   width: 100%;
   height: auto;
-  padding: 20px 0 150px;
+  padding: 60px 8%;
   text-align: center;
   background-color: var(--primary-color);
 }
@@ -297,6 +295,7 @@ header .background div {
 #upcoming-events {
   width: 100%;
   height: 100vh;
+
   background-color: #fffcf207;
 }
 
@@ -307,15 +306,16 @@ header .background div {
   align-items: center;
   justify-content: center;
 }
+
 .buy-button {
   position: absolute;
-  margin-top: -125px; /*bring arc up closer*/
+  margin-top: -45px;
   left: 50%;
   transform: translateX(-50%);
-  width: 300px; /* smaller circle */
-  height: 100px; /* shallower curve */
+  width: 300px;
+  height: 100px;
   border-radius: 50%;
-  border-bottom: 6px solid var(--secondary-color); /* thicker, more visible */
+  border-bottom: 6px solid var(--secondary-color);
 }
 .buy-button a {
   font-size: 2em;
@@ -323,6 +323,7 @@ header .background div {
   letter-spacing: 0.1em;
   color: var(--white-color);
 }
+
 .button {
   position: relative;
   width: 150px;
@@ -540,35 +541,72 @@ header .background div {
 }
 
 #contact {
-  /* background-color: #202b3b; */
-  width: 100%;
-  height: auto;
-  padding: 0 8% 10px;
+  margin-top: 150px;
 }
 
 .contact-cards {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  gap: 20px;
+  margin: 50px auto 0;
+  grid-template-columns: 1fr;
+  max-width: 700px;
 }
 
+/* Desktop: 2×2 grid */
+@media (min-width: 992px) {
+  .contact-cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-items: center;
+  }
+}
+
+/* Small screens: center cards */
+@media (max-width: 991px) {
+  .contact-cards {
+    justify-items: center; /* center all cards horizontally */
+  }
+  .card {
+    max-width: 320px; /* keeps them from stretching full width */
+    width: 100%;
+  }
+}
+/* Each card auto-expands but stays consistent */
 .card {
-  margin: 0 0 20px;
-  padding: 10px;
+  margin: 0;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  width: 300px;
-  height: 150px;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px; /* keeps consistent card width */
+  min-height: 140px;
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .card .icon {
   width: 40px;
   height: 40px;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+/* ---- New social handle link styling ---- */
+.card a {
+  color: var(--white-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.card a:hover {
   color: var(--secondary-color);
 }
 
@@ -635,7 +673,7 @@ footer {
 }
 
 .footer-links {
-  padding: 20px;
+  padding: 40px;
 }
 
 .links,
@@ -788,7 +826,59 @@ footer {
 /* event */
 
 /* ===== Fresh Fusion split section ===== */
-/* Uses your existing color tokens from :root (primary/secondary/etc.) */
+
+/* Reusable arc-style button */
+.arc-button {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-color);
+  background: transparent;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* keep link inside arc-button white if nested */
+.arc-button a {
+  color: white;
+}
+
+/* Orange arc underline (attached to text) */
+.arc-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px; /* distance from text */
+  transform: translateX(-50%);
+  width: 60%;
+  height: 100px;
+  border-bottom: 6px solid var(--secondary-color);
+  border-radius: 50%;
+}
+
+/* Hover effect */
+.arc-button:hover {
+  color: var(--secondary-color);
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  .arc-button {
+    font-size: 1.8em;
+    padding: 12px 20px;
+  }
+  .arc-button::after {
+    bottom: -5px;
+    width: 70%;
+    height: 60px;
+    border-bottom-width: 4px;
+  }
+}
 
 .fusion-split {
   width: 100%;
@@ -837,6 +927,7 @@ footer {
   opacity: 0.9;
   text-align: left;
 }
+/* TICKET BUUTON BELOW POSTER*/
 
 /* --- BOTTOM: Event card --- */
 .left-bottom {
@@ -909,7 +1000,7 @@ footer {
 .hero-img {
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  min-height: 500px;
   background-size: cover;
   background-position: center;
   border-radius: 6px;
@@ -938,9 +1029,9 @@ footer {
   }
 
   .badge {
-    width: 110px;
+    width: 100px;
     height: 80px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
 
   .ff-copy {
@@ -955,15 +1046,15 @@ footer {
 .about-vp {
   position: relative;
   width: 100%;
-  padding: clamp(14px, 2.2vw, 28px) 8%;
-  margin-top: clamp(12px, 2vw, 24px);
+  padding: clamp(10px, 1vw, 15px) 8%;
+  margin-top: clamp(1px, 2vw, 24px);
   z-index: 1; /* stays above the background overlay */
 }
 
 .about-wrap {
   max-width: 1100px;
   margin: 0 auto;
-  padding: clamp(16px, 2.4vw, 28px);
+  padding: clamp(13px, 2vw, 20px);
   background: rgba(
     15,
     23,
@@ -994,7 +1085,7 @@ footer {
   line-height: 1.9;
   color: var(--white-color);
   opacity: 0.7;
-  margin: 0;
+  /* margin: 0; */
   text-align: left;
 }
 
@@ -1105,7 +1196,7 @@ footer {
   padding: 60px 8%;
   /* margin-top: 30px; */
   background: #202b3b; /* subtle contrast */
-  border-radius: 12px;
+  border-radius: 5px;
   text-align: center;
 }
 
@@ -1212,4 +1303,256 @@ footer {
 .back-btn:hover {
   transform: translateY(-2px);
   background: rgba(234, 80, 35, 0.12);
+}
+
+/* ======== SCOPED FIXES FOR UPCOMING EVENTS ======== */
+/* Equal-height columns and clean alignment */
+#fresh-fusion.fusion-split {
+  align-items: stretch; /* both columns same height */
+  min-height: 520px;
+}
+
+/* Left: image fills, button sits below */
+#fresh-fusion .split-left {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto; /* image grows, button auto */
+  gap: 16px;
+}
+
+/* Keep the global .hero-img intact; only tune here */
+#fresh-fusion .hero-img {
+  height: 100%;
+  min-height: 420px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Right: About (fills) + Venue (bottom) */
+#fresh-fusion .split-right {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 28px;
+  height: 100%;
+}
+
+/* Center About copy vertically */
+#fresh-fusion .left-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Venue hugs bottom */
+#fresh-fusion .left-bottom {
+  align-self: end;
+}
+
+/* If you used the older global .buy-button here, neutralize it locally */
+
+@media (max-width: 1100px) {
+  #fresh-fusion.fusion-split {
+    grid-template-columns: 1fr; /* stack columns */
+    min-height: 0;
+    gap: 28px;
+  }
+  #fresh-fusion .split-right {
+    grid-template-rows: auto auto;
+  }
+}
+
+@media (max-width: 720px) {
+  #fresh-fusion .hero-img {
+    min-height: 280px;
+    height: auto;
+  }
+  #fresh-fusion .buy-button a {
+    font-size: 1.4em;
+    padding: 12px 20px;
+  }
+  #fresh-fusion .buy-button a::after {
+    height: 20px;
+    border-bottom-width: 4px;
+  }
+  #fresh-fusion .ff-copy {
+    max-width: 95%;
+    text-align: center;
+    margin-inline: auto;
+  }
+  #fresh-fusion .left-bottom {
+    grid-template-columns: 1fr; /* badge on top, details below */
+    justify-items: start;
+    padding-left: 8px;
+  }
+  #fresh-fusion .badge {
+    margin-bottom: 6px;
+  }
+}
+
+/* FUSION SECTION */
+
+/* ===== UPCOMING EVENTS: Vertical layout (scoped) ===== */
+/* ===== UPCOMING EVENTS (scoped to this section only) ===== */
+#upcoming-events.events-vertical.two-col {
+  width: 100%;
+  padding: 100px 5% 60px;
+}
+
+#upcoming-events.events-vertical.two-col .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* mobile/tablet: vertical */
+  gap: 22px;
+  align-items: start;
+}
+
+/* LEFT: poster */
+#upcoming-events.events-vertical.two-col .poster {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+#upcoming-events.events-vertical.two-col .poster img {
+  display: block;
+  width: 100%;
+  height: auto; /* no crop on small screens */
+}
+
+/* RIGHT: content */
+#upcoming-events.events-vertical.two-col .content {
+  display: grid;
+  gap: 14px;
+  text-align: center; /* nice for small screens */
+}
+
+/* Subline centered + spacing before BUY */
+#upcoming-events.events-vertical.two-col .content .section-title-2 {
+  text-align: center;
+  letter-spacing: 0.2em;
+  /* margin-top: 1px; */
+  margin-bottom: 12px;
+}
+
+/* About spacing + readable copy width */
+#upcoming-events.events-vertical.two-col .about-ff {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  padding-inline: 6px;
+}
+#upcoming-events.events-vertical.two-col .ff-copy {
+  max-width: 70ch;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* Venue / Address / Date */
+#upcoming-events.events-vertical.two-col .details-stack {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr; /* stack on mobile */
+  gap: 14px 18px;
+  text-align: left;
+  padding-inline: 6px;
+}
+#upcoming-events.events-vertical.two-col .venue-circle {
+  width: clamp(86px, 12vw, 110px);
+  height: clamp(86px, 12vw, 110px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  /* align-items: center; */
+}
+#upcoming-events.events-vertical.two-col .event-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+#upcoming-events.events-vertical.two-col .meta-item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 8px;
+  align-items: start;
+}
+#upcoming-events.events-vertical.two-col .meta-ico {
+  line-height: 1.2;
+}
+
+/* ===== Desktop & larger ===== */
+@media (min-width: 992px) {
+  #upcoming-events.events-vertical.two-col .inner {
+    grid-template-columns: 1fr 1fr; /* equal L/R widths */
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* Poster smaller, edges aligned with content */
+  #upcoming-events.events-vertical.two-col .poster {
+    min-height: 400px;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #upcoming-events.events-vertical.two-col .poster img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* uncropped */
+  }
+
+  /* Right column alignment + slightly smaller fonts */
+  #upcoming-events.events-vertical.two-col .content {
+    text-align: left;
+    align-content: start;
+    gap: 18px;
+  }
+  #upcoming-events.events-vertical.two-col .content .section-title-1 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  #upcoming-events.events-vertical.two-col .content .section-title-2 {
+    font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+    text-align: center; /* keep subline centered on desktop */
+  }
+  /* Venue row lined up with right column */
+  #upcoming-events.events-vertical.two-col .details-stack {
+    grid-template-columns: auto 1fr; /* VENUE circle then text */
+    align-items: center;
+  }
+}
+
+/* ===== Tablets ===== */
+@media (min-width: 600px) and (max-width: 991.98px) {
+  #upcoming-events.events-vertical.two-col .poster img {
+    max-height: 60vh;
+    object-fit: contain;
+  }
+  #upcoming-events.events-vertical.two-col .content {
+    text-align: center;
+  }
+}
+
+/* ===== Phones ===== */
+@media (max-width: 600px) {
+  #upcoming-events.events-vertical.two-col .ff-copy {
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  #upcoming-events.events-vertical.two-col .venue-circle {
+    display: flex;
+    align-items: center; /* vertical center */
+    justify-content: center; /* horizontal center */
+    text-align: center;
+    margin: 0 auto; /* centers horizontally */
+    display: flex; /* ensure it's treated like a block for margin auto */
+  }
 }
