@@ -309,13 +309,13 @@ header .background div {
 
 .buy-button {
   position: absolute;
-  margin-top: -45px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
   height: 100px;
-  border-radius: 50%;
-  border-bottom: 6px solid var(--secondary-color);
+  background-color: #fa6400;
 }
 .buy-button a {
   font-size: 2em;
@@ -333,6 +333,7 @@ header .background div {
   cursor: pointer;
   word-break: break-all;
   transition: all 0.5s ease;
+  border-radius: 15%;
 }
 
 .button:hover {
@@ -541,7 +542,7 @@ header .background div {
 }
 
 #contact {
-  margin-top: 160px;
+  margin-top: 220px;
 }
 
 .contact-cards {
@@ -552,7 +553,7 @@ header .background div {
   max-width: 700px;
 }
 
-/* Desktop: 2×2 grid */
+/* Desktop: 2Ã—2 grid */
 @media (min-width: 992px) {
   .contact-cards {
     grid-template-columns: repeat(2, 1fr);
@@ -826,60 +827,91 @@ footer {
 /* event */
 
 /* ===== Fresh Fusion split section ===== */
+/* ================== ARC BUTTON ================== */
 .arc-button {
-  position: relative;
-  display: inline-block; /* or inline-flex if you need centering inside */
-  font-size: 2em;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white-color);
-  background: transparent;
-  border: none;
-  text-align: center;
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff !important; /* force white */
   cursor: pointer;
-  margin-bottom: 20px;
-  /* optional: expand the hit-area a bit */
-  padding: 6px 10px;
-}
-
-.arc-button::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -20px;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 100px;
-  border-bottom: 6px solid var(--secondary-color);
-  border-radius: 50%;
-  pointer-events: none; /* <-- key line */
-  z-index: -1; /* keeps arc visually behind the text */
-}
-
-/* If you’re placing an <a> inside, keep it non-blocking */
-.arc-button a {
-  color: white;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 12px auto; /* centers horizontally */
+  min-height: 2.6rem;
+  padding: 0.6rem 0.9rem; /* reduced width */
+  position: relative;
   text-decoration: none;
-  pointer-events: auto; /* allows the link itself to be clickable */
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: fit-content !important; /* hugs text */
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-/* Hover effect */
-.arc-button:hover {
-  color: var(--secondary-color);
+/* --- Force text color white in ALL states --- */
+.arc-button,
+.arc-button:link,
+.arc-button:visited,
+.arc-button:hover,
+.arc-button:focus,
+.arc-button:active,
+.arc-button a,
+.arc-button a:link,
+.arc-button a:visited,
+.arc-button a:hover,
+.arc-button a:focus,
+.arc-button a:active {
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
-/* 📱 Responsive adjustments */
-@media (max-width: 768px) {
+/* Hover / active states */
+.arc-button:hover,
+.arc-button:focus {
+  background-color: #fb8332;
+  color: #fff !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  transform: translateY(-1px);
+}
+
+.arc-button:active {
+  background-color: #c85000;
+  color: #fff !important;
+  box-shadow: rgba(0, 0, 0.06, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+/* ================== PARENT CONTENT CENTER ================== */
+.content {
+  text-align: center; /* centers the button with text above */
+}
+
+/* ================== MOBILE RESPONSIVE ================== */
+@media (max-width: 600px) {
   .arc-button {
-    font-size: 1.8em;
-    padding: 12px 20px;
-  }
-  .arc-button::after {
-    bottom: -5px;
-    width: 70%;
-    height: 60px;
-    border-bottom-width: 4px;
+    display: block; /* make it full-width */
+    width: 100% !important; /* strong CTA look */
+    max-width: 320px; /* prevent it from stretching too wide */
+    font-size: 14px;
+    padding: 0.55rem 0.8rem;
+    min-height: 2.4rem;
+    margin: 14px auto; /* keep it centered */
   }
 }
 
@@ -1051,7 +1083,7 @@ footer {
   position: relative;
   width: 100%;
   padding: clamp(10px, 1vw, 15px) 4%;
-  margin-top: clamp(1px, 2vw, 24px);
+  margin-top: clamp(75px, 2vw, 24px);
   z-index: 1; /* stays above the background overlay */
 }
 
@@ -1450,13 +1482,13 @@ footer {
   padding-inline: 6px;
 }
 #upcoming-events.events-vertical.two-col .venue-circle {
-  width: clamp(86px, 12vw, 110px);
-  height: clamp(86px, 12vw, 110px);
-  border-radius: 50%;
+  width: clamp(160px, 12vw, 110px);
+  height: clamp(70px, 12vw, 110px);
   display: grid;
   place-items: center;
   text-decoration: none;
   cursor: pointer;
+  border-width: 4px;
   /* align-items: center; */
 }
 #upcoming-events.events-vertical.two-col .event-meta {
