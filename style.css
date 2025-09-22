@@ -306,22 +306,35 @@ header .background div {
   align-items: center;
   justify-content: center;
 }
-
 .buy-button {
   position: absolute;
-  margin-top: 7px;
+  /* margin-top: 1px; */
   margin-bottom: 7px;
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;
-  height: 100px;
+  width: 245px;
+  height: 80px;
   background-color: #fa6400;
+  border-radius: 10px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
+
+.buy-button:hover {
+  background-color: #ff7a1a; /* Slightly lighter on hover */
+  transform: translateX(-50%) scale(1.05); /* Subtle pop effect */
+}
+
 .buy-button a {
-  font-size: 2em;
-  font-weight: 800;
+  font-size: 1.5em;
+  font-weight: 600;
   letter-spacing: 0.1em;
   color: var(--white-color);
+  text-decoration: none;
 }
 
 .button {
@@ -908,9 +921,9 @@ footer {
     display: block; /* make it full-width */
     width: 100% !important; /* strong CTA look */
     max-width: 320px; /* prevent it from stretching too wide */
-    font-size: 14px;
+    font-size: 16px;
     padding: 0.55rem 0.8rem;
-    min-height: 2.4rem;
+    min-height: 2.5rem;
     margin: 14px auto; /* keep it centered */
   }
 }
@@ -1312,6 +1325,7 @@ footer {
 }
 
 .back-btn {
+  margin-top: 30px;
   display: inline-block;
   padding: 12px 22px;
   border-radius: 999px;
