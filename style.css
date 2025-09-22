@@ -1402,7 +1402,7 @@ footer {
 
 #upcoming-events.events-vertical.two-col .poster {
   min-height: clamp(260px, 56vw, 420px);
-  background-image: url("assets/tour-img-01.jpg");
+  background: url(./assets/tour-img-01.JPG);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
