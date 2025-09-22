@@ -1400,16 +1400,15 @@ footer {
   align-items: start;
 }
 
-/* LEFT: poster */
 #upcoming-events.events-vertical.two-col .poster {
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
+  min-height: clamp(260px, 56vw, 420px);
+  background-image: url("assets/tour-img-01.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 #upcoming-events.events-vertical.two-col .poster img {
-  display: block;
-  width: 100%;
-  height: auto; /* no crop on small screens */
+  display: none; /* no crop on small screens */
 }
 
 /* RIGHT: content */
@@ -1487,8 +1486,8 @@ footer {
 
   /* Poster smaller, edges aligned with content */
   #upcoming-events.events-vertical.two-col .poster {
-    min-height: 400px;
-    max-height: 500px;
+    min-height: 585px; /* taller on desktops */
+    max-height: 600px; /* a bit more headroom */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1524,7 +1523,8 @@ footer {
 /* ===== Tablets ===== */
 @media (min-width: 600px) and (max-width: 991.98px) {
   #upcoming-events.events-vertical.two-col .poster img {
-    max-height: 60vh;
+    min-height: clamp(300px, 70vw, 420px);
+    /* max-height: 60vh; */
     object-fit: contain;
   }
   #upcoming-events.events-vertical.two-col .content {
@@ -1538,6 +1538,14 @@ footer {
     text-align: left;
   }
 }
+@media (max-width: 576px) {
+  #upcoming-events.events-vertical.two-col .poster {
+    min-height: clamp(450px, 85vw, 530px); /* make it a bit bigger */
+    background-size: contain; /* no crop */
+    background-position: center;
+  }
+}
+
 @media (max-width: 600px) {
   #upcoming-events.events-vertical.two-col .venue-circle {
     display: flex;
