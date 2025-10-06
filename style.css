@@ -1448,11 +1448,26 @@ footer {
 
 #upcoming-events.events-vertical.two-col .poster {
   min-height: clamp(260px, 56vw, 420px);
-  background: url(./assets/tour-img-01.JPG);
+  /* background: url(./assets/tour-img-01.JPG); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
+.poster.slideshow {
+  animation: twoSlide 5s infinite alternate ease-in-out;
+}
+/* Define two-image background transition */
+@keyframes twoSlide {
+  0%,
+  45% {
+    background-image: url("./assets/tour-img-01.JPG");
+  }
+  55%,
+  100% {
+    background-image: url("./assets/bandtaarang.jpeg");
+  }
+}
+
 #upcoming-events.events-vertical.two-col .poster img {
   display: none; /* no crop on small screens */
 }
